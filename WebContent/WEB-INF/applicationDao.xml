@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+     xsi:schemaLocation="
+     http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+    <bean id="accountDao" class="org.mybatis.spring.mapper.MapperFactoryBean">
+        <property name="mapperInterface" value="com.trendmicro.tmia.dao.AccountDao"></property>
+        <property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
+	</bean>
+	
+    <bean id="employeeDao" class="org.mybatis.spring.mapper.MapperFactoryBean">
+        <property name="mapperInterface" value="com.trendmicro.tmia.dao.EmployeeDao"></property>
+        <property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
+	</bean>
+		
+	<bean id="invoiceDao" class="org.mybatis.spring.mapper.MapperFactoryBean">
+        <property name="mapperInterface" value="com.trendmicro.tmia.dao.InvoiceDao"></property>
+        <property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
+	</bean>
+	
+	<bean id="invoiceTypeDao" class="org.mybatis.spring.mapper.MapperFactoryBean">
+        <property name="mapperInterface" value="com.trendmicro.tmia.dao.InvoiceTypeDao"></property>
+        <property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
+	</bean>
+    
+</beans>

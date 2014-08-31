@@ -1,0 +1,53 @@
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/appidvb08w148dk/!svn/ver/11/1/src/com/weixin/parser
+END
+WxRecvLinkMsgParser.java
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/appidvb08w148dk/!svn/ver/11/1/src/com/weixin/parser/WxRecvLinkMsgParser.java
+END
+WxRecvEventMsgParser.java
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/appidvb08w148dk/!svn/ver/11/1/src/com/weixin/parser/WxRecvEventMsgParser.java
+END
+WxRecvPicMsgParser.java
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/appidvb08w148dk/!svn/ver/11/1/src/com/weixin/parser/WxRecvPicMsgParser.java
+END
+WxRecvTextMsgParser.java
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/appidvb08w148dk/!svn/ver/11/1/src/com/weixin/parser/WxRecvTextMsgParser.java
+END
+WxRecvMsgBaseParser.java
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/appidvb08w148dk/!svn/ver/11/1/src/com/weixin/parser/WxRecvMsgBaseParser.java
+END
+WxRecvMsgParser.java
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/appidvb08w148dk/!svn/ver/11/1/src/com/weixin/parser/WxRecvMsgParser.java
+END
+WxMsgKit.java
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/appidvb08w148dk/!svn/ver/11/1/src/com/weixin/parser/WxMsgKit.java
+END
+WxRecvGeoMsgParser.java
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/appidvb08w148dk/!svn/ver/11/1/src/com/weixin/parser/WxRecvGeoMsgParser.java
+END
