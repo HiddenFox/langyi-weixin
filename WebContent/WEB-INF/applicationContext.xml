@@ -20,6 +20,8 @@
 	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">  
     	<property name="driverClassName" value="${jdbc.driverClassName}" />  
     	<property name="url" value="${jdbc.url}" />  
+    	<property name="username" value="${jdbc.username}" />
+    	<property name="password" value="${jdbc.password}" />
 	</bean>
 	
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
@@ -27,8 +29,8 @@
         <!-- MyBatis的设置  
         <property name="configLocation" value="/WEB-INF/mybatis-configuration.xml"/>-->
         <!-- 自动设置typeAlias -->
-        <property name="typeAliasesPackage" value="com.trendmicro.tmia.model" /> 
-        <property name="mapperLocations" value="classpath*:com/trendmicro/tmia/model/*.xml" />
+        <property name="typeAliasesPackage" value="com.langyi.weixin.model" /> 
+        <property name="mapperLocations" value="classpath*:com/langyi/weixin/model/*.xml" />
     </bean>
     
    <!--
@@ -39,7 +41,7 @@
 	</bean>  -->
     
    	<!-- enable component scanning -->    
-    <context:component-scan base-package="com.trendmicro.tmia.*" />
+    <context:component-scan base-package="com.langyi.weixin.*" />
 
     <!-- enable autowire -->
     <context:annotation-config />
@@ -61,24 +63,5 @@
 		<property name="prefix" value="/view/"/>
 		<property name="suffix" value=".jsp"/>
 	</bean>
-	
-	<!--<bean class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping">
-		<property name="interceptors">
-			<list>
-				<bean class="com.trendmicro.tmia.interceptor.AccountInterceptor" />
-			</list>
-		</property>
-	</bean>-->
-	
-	<mvc:interceptors>  
-		<mvc:interceptor>  
-			<mvc:mapping path="/invoice" />
-			<mvc:mapping path="/my" />
-			<mvc:mapping path="/logout" />
-			<mvc:mapping path="/invoice/delete" />
-			<mvc:mapping path="/invoice/edit" />
-			<bean class="com.trendmicro.tmia.interceptor.LoginInterceptor"></bean>  
-		</mvc:interceptor>  
-	</mvc:interceptors>  
 	
 </beans>

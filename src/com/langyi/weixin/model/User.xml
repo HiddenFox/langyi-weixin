@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.langyi.weixin.dao.UserDao" >
+	<resultMap id="userResultMap" type="User">
+		<id property="id" column="ID" />
+		<result property="userId" column="SFZH" />
+		<result property="cardNumber" column="HYKH" />
+		<result property="credit" column="JF" />
+		<result property="weixinAccount" column="MM" />
+	</resultMap>
+	
+	<select id="selectUserByWeixinAccount" parameterType="String" resultMap="userResultMap">
+		SELECT ID, SFZH, HYKH, JF, MM FROM employee WHERE MM = #{weixinAccount}
+	</select>
+	
+	
+</mapper>
