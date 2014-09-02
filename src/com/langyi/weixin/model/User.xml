@@ -10,7 +10,7 @@
 	</resultMap>
 	
 	<select id="selectUserByWeixinAccount" parameterType="String" resultMap="userResultMap">
-		SELECT ID, SFZH, HYKH, JF, MM FROM employee WHERE MM = #{weixinAccount}
+		SELECT ID, SFZH, HYKH, JF, MM FROM HY WHERE MM = #{weixinAccount}
 	</select>
 	
 	
