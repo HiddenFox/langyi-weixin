@@ -1,5 +1,6 @@
 package com.langyi.weixin.controller;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -25,6 +26,12 @@ public class WeixinController {
 	
 	private static Logger LOG = Logger.getLogger(WeixinController.class.getName());
 	private final String TOKEN = "La1ng1Yi8";
+	
+	@Resource(name="eventProcessor")
+	private EventProcessor eventProcessor;
+	
+	@Resource(name="textProcessor")
+	private TextProcessor textProcessor;
 	
 	@RequestMapping(method=RequestMethod.GET)
 	public ModelAndView authenticate(HttpServletResponse response, 
@@ -63,9 +70,9 @@ public class WeixinController {
 		WxSendMsg sendMsg = null;
 		
 		if(receiveMsg instanceof WxRecvEventMsg) {
-			sendMsg = new EventProcessor().process((WxRecvEventMsg)receiveMsg);
+			sendMsg = eventProcessor.process((WxRecvEventMsg)receiveMsg);
 		} else if (receiveMsg instanceof WxRecvTextMsg) {
-			sendMsg = new TextProcessor().process((WxRecvTextMsg)receiveMsg);
+			sendMsg = textProcessor.process((WxRecvTextMsg)receiveMsg);
 		} else {
 			return null;
 		}
@@ -79,5 +86,5 @@ public class WeixinController {
 		}
 		return null;
 	}
-
+	
 }

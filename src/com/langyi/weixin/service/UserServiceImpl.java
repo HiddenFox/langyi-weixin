@@ -27,6 +27,7 @@ public class UserServiceImpl implements UserService{
 	
 	@Override
 	public User getUserByWeixinAccount(String weixinAccount) {
+		LOG.debug("getUserByWeixinAccount " + weixinAccount);
 		return userDao.selectUserByWeixinAccount(weixinAccount);
 	}
 

@@ -2,6 +2,7 @@ package com.langyi.weixin.controller.processor;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import com.langyi.weixin.model.User;
 import com.langyi.weixin.service.UserService;
@@ -10,7 +11,7 @@ import com.weixin.vo.recv.WxRecvTextMsg;
 import com.weixin.vo.send.WxSendMsg;
 import com.weixin.vo.send.WxSendTextMsg;
 
-
+@Component("getUserCreditProcessor")
 public class GetUserCreditProcessor extends TextProcessor {
 	
 	private static Logger LOG = Logger.getLogger(GetUserCreditProcessor.class.getName());
@@ -20,8 +21,12 @@ public class GetUserCreditProcessor extends TextProcessor {
 
 	@Override
 	public WxSendMsg process(WxRecvTextMsg receiveMsg) {
+		LOG.debug("GetUserCreditProcessor start");
+		
 		String weixinAccount = receiveMsg.getFromUser();
+		LOG.debug("1");
 		User user = userService.getUserByWeixinAccount(weixinAccount);
+		LOG.debug("2");
 		String msgContent = null;
 		
 		if(user != null){
