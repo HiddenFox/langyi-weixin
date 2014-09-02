@@ -9,8 +9,12 @@
 		<result property="weixinAccount" column="MM" />
 	</resultMap>
 	
-	<select id="selectUserByWeixinAccount" parameterType="String" resultMap="userResultMap">
+	<select id="selectByWeixinAccount" parameterType="String" resultMap="userResultMap">
 		SELECT ID, SFZH, HYKH, JF, MM FROM HY WHERE MM = #{weixinAccount}
+	</select>
+	
+	<select id="selectByUserIdAndCardNumber" parameterType="User" resultMap="userResultMap">
+		SELECT ID, SFZH, HYKH, JF, MM FROM HY WHERE SFZH = #{userId} AND HYKH = #{cardNumber}
 	</select>
 	
 	

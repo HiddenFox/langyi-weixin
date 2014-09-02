@@ -17,7 +17,7 @@ public class UserServiceImpl implements UserService{
 
 	@Override
 	public boolean doesUserExist(String weixinAccount) {
-		User user = userDao.selectUserByWeixinAccount(weixinAccount);
+		User user = userDao.selectByWeixinAccount(weixinAccount);
 		if (user == null) {
 			return false;
 		} else {
@@ -28,7 +28,16 @@ public class UserServiceImpl implements UserService{
 	@Override
 	public User getUserByWeixinAccount(String weixinAccount) {
 		LOG.debug("getUserByWeixinAccount " + weixinAccount);
-		return userDao.selectUserByWeixinAccount(weixinAccount);
+		return userDao.selectByWeixinAccount(weixinAccount);
+	}
+
+	@Override
+	public boolean login(User user) {
+		if (userDao.selectByUserIdAndCardNumber(user) != null) {
+			return true;
+		} else {
+			return false;
+		}
 	}
 
 }

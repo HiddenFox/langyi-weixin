@@ -7,5 +7,7 @@ public interface UserService {
 	public boolean doesUserExist(String weixinAccount);
 	
 	public User getUserByWeixinAccount(String weixinAccount);
+	
+	public boolean login(User user);
 
 }

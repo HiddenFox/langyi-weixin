@@ -8,6 +8,8 @@ import com.langyi.weixin.model.User;
 @Repository
 public interface UserDao {
 
-	public User selectUserByWeixinAccount(String weixinAccount);
+	public User selectByWeixinAccount(String weixinAccount);
+	
+	public User selectByUserIdAndCardNumber(User user);
 	
 }
