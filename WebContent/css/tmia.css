@@ -1,0 +1,13 @@
+.container {
+	width: 794px;
+	overflow: hidden;
+}
+
+
+.controls select {
+	width: 284px;
+}
+
+.controls .date .input-xlarge{
+	width: 214px;
+}

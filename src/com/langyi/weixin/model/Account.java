@@ -1,10 +1,9 @@
 package com.langyi.weixin.model;
 
-public class User {
+public class Account {
 	private String id;
-	private String userId;
 	private String cardNumber;
-	private int credit;
+	private String credit;
 	private String weixinAccount;
 	
 	public String getId() {
@@ -13,22 +12,16 @@ public class User {
 	public void setId(String id) {
 		this.id = id;
 	}
-	public String getUserId() {
-		return userId;
-	}
-	public void setUserId(String userId) {
-		this.userId = userId;
-	}
 	public String getCardNumber() {
 		return cardNumber;
 	}
 	public void setCardNumber(String cardNumber) {
 		this.cardNumber = cardNumber;
 	}
-	public int getCredit() {
+	public String getCredit() {
 		return credit;
 	}
-	public void setCredit(int credit) {
+	public void setCredit(String credit) {
 		this.credit = credit;
 	}
 	public String getWeixinAccount() {
