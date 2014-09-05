@@ -1,4 +1,4 @@
-package com.langyi.weixin.service.util;
+package com.langyi.weixin.util;
 
 public class Param {
 	
