@@ -29,8 +29,7 @@ public class BindCardProcessor extends TextProcessor {
 		
 		String msgContent = null;
 		
-		if(account.getCardNumber().matches("\\d+") 
-				&& account.getCardNumber().length() < 20 
+		if(account.getCardNumber().matches("\\d+") && account.getCardNumber().length() < 20 
 				&& accountService.login(account)){
 			LOG.debug("Account exist : weixinAccount [" + account.getWeixinAccount() + "]");
 			msgContent = "已成功绑定逸卡：" + account.getCardNumber() 
