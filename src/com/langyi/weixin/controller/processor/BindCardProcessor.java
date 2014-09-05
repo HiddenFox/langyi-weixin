@@ -11,30 +11,33 @@ import com.weixin.vo.recv.WxRecvTextMsg;
 import com.weixin.vo.send.WxSendMsg;
 import com.weixin.vo.send.WxSendTextMsg;
 
-@Component("getUserCreditProcessor")
-public class GetCreditProcessor extends TextProcessor {
+@Component("bindCardProcessor")
+public class BindCardProcessor extends TextProcessor {
 	
-	private static Logger LOG = Logger.getLogger(GetCreditProcessor.class.getName());
+	private static Logger LOG = Logger.getLogger(BindCardProcessor.class.getName());
 	
 	@Autowired
 	AccountService accountService;
 
 	@Override
 	public WxSendMsg process(WxRecvTextMsg receiveMsg) {
-		LOG.debug("GetUserCreditProcessor start");
+		LOG.debug("BindCardProcessor start");
 		
-		String weixinAccount = receiveMsg.getFromUser();
-		Account account = accountService.getUserByWeixinAccount(weixinAccount);
+		Account account = new Account();
+		account.setWeixinAccount(receiveMsg.getFromUser());
+		account.setCardNumber(receiveMsg.getContent().substring(2));
+		
 		String msgContent = null;
 		
-		if(account == null){
-			LOG.debug("Account not exists : weixinAccount [" + weixinAccount + "]");
-			msgContent = "您的微信账号还未和逸卡绑定。\n\r请回复\"bd+逸卡卡号\"绑定至您的逸卡。";
-		} else {
-			LOG.debug("Account exist : weixinAccount [" + weixinAccount + "]");
-			msgContent = "您的逸卡号：" + account.getCardNumber()
+		if(accountService.login(account)){
+			LOG.debug("Account exist : weixinAccount [" + account.getWeixinAccount() + "]");
+			msgContent = "已成功绑定逸卡：" + account.getCardNumber() 
 					+ "\n\r当前积分：" + account.getCredit()
 					+ "\n\r回复jb可以解除绑定。";
+					
+		} else {
+			LOG.debug("Account not exists : weixinAccount [" + account.getWeixinAccount() + "]");
+			msgContent = "卡号不正确，绑定失败。";
 		}
 		
 		WxSendMsg sendMsg = WeiXin.builderSendByRecv(receiveMsg);
@@ -42,6 +45,4 @@ public class GetCreditProcessor extends TextProcessor {
 		
 		return sendMsg;
 	}
-
-
 }

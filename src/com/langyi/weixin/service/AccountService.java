@@ -7,5 +7,7 @@ public interface AccountService {
 	public Account getUserByWeixinAccount(String weixinAccount);
 	
 	public boolean login(Account user);
+	
+	public boolean logout(Account user);
 
 }

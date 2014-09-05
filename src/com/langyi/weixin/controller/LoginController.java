@@ -49,5 +49,13 @@ public class LoginController {
 			return "login";
 		}
 	}
+	
+	@RequestMapping(value="/logout", method=RequestMethod.GET)
+	public String logout(@ModelAttribute("account") Account account) throws IOException {
+		String weixinAccount = account.getWeixinAccount();
+		LOG.debug("Logout, weixinAccount : " + weixinAccount);
+		accountService.logout(account);
+		return "redirect:/login?weixinAccount=" + weixinAccount;
+	}
 
 }

@@ -6,8 +6,8 @@ import org.springframework.stereotype.Service;
 
 import com.langyi.weixin.dao.AccountDao;
 import com.langyi.weixin.model.Account;
-import com.langyi.weixin.service.util.HttpRequest;
-import com.langyi.weixin.service.util.Param;
+import com.langyi.weixin.util.HttpRequest;
+import com.langyi.weixin.util.Param;
 
 @Service
 public class AccountServiceImpl implements AccountService{
@@ -44,6 +44,11 @@ public class AccountServiceImpl implements AccountService{
 		String credit = HttpRequest.sendGet(Param.URL_GET_CREDIT + cardNumber);
 		LOG.debug("get credit:" + credit + ", cardNumber:" + cardNumber);
 		return credit;
+	}
+	
+	public boolean logout(Account account) {
+		accountDao.deleteByWeixinAccount(account.getWeixinAccount());
+		return true;
 	}
 
 }

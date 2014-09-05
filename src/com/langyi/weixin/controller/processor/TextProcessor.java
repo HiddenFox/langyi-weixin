@@ -17,12 +17,24 @@ public class TextProcessor implements MessageProcessor<WxRecvTextMsg> {
 	@Resource(name="getUserCreditProcessor")
 	private TextProcessor getUserCreditProcessor;
 	
+	@Resource(name="bindCardProcessor")
+	private TextProcessor bindCardProcessor;
+	
+	@Resource(name="unbindCardProcessor")
+	private TextProcessor unbindCardProcessor;
+	
 	@Override
 	public WxSendMsg process(WxRecvTextMsg receiveMsg) {
 		String command = receiveMsg.getContent().toLowerCase();
 		LOG.debug("Receive command: " + command);
-		if ("jf".equals(command)) {
+		if (command.indexOf("jf") == 0) {
 			return getUserCreditProcessor.process(receiveMsg);
+		}
+		if (command.indexOf("bd") == 0) {
+			return bindCardProcessor.process(receiveMsg);
+		}
+		if (command.indexOf("jb") == 0) {
+			return unbindCardProcessor.process(receiveMsg);
 		}
 		return null;
 	}
