@@ -29,11 +29,13 @@ public class BindCardProcessor extends TextProcessor {
 		
 		String msgContent = null;
 		
-		if(accountService.login(account)){
+		if(account.getCardNumber().matches("\\d+") 
+				&& account.getCardNumber().length() < 20 
+				&& accountService.login(account)){
 			LOG.debug("Account exist : weixinAccount [" + account.getWeixinAccount() + "]");
 			msgContent = "已成功绑定逸卡：" + account.getCardNumber() 
-					+ "\n\r当前积分：" + account.getCredit()
-					+ "\n\r回复jb可以解除绑定。";
+					+ "\n当前积分：" + account.getCredit()
+					+ "\n发送jb可以解除绑定。";
 					
 		} else {
 			LOG.debug("Account not exists : weixinAccount [" + account.getWeixinAccount() + "]");

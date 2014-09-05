@@ -29,12 +29,12 @@ public class GetCreditProcessor extends TextProcessor {
 		
 		if(account == null){
 			LOG.debug("Account not exists : weixinAccount [" + weixinAccount + "]");
-			msgContent = "您的微信账号还未和逸卡绑定。\n\r请回复\"bd+逸卡卡号\"绑定至您的逸卡。";
+			msgContent = "您的微信账号还未和逸卡绑定。\n请发送\"bd+逸卡卡号\"绑定至您的逸卡。";
 		} else {
 			LOG.debug("Account exist : weixinAccount [" + weixinAccount + "]");
 			msgContent = "您的逸卡号：" + account.getCardNumber()
-					+ "\n\r当前积分：" + account.getCredit()
-					+ "\n\r回复jb可以解除绑定。";
+					+ "\n当前积分：" + account.getCredit()
+					+ "\n发送jb可以解除绑定。";
 		}
 		
 		WxSendMsg sendMsg = WeiXin.builderSendByRecv(receiveMsg);
