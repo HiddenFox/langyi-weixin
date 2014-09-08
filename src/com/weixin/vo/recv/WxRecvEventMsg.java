@@ -10,7 +10,7 @@ public class WxRecvEventMsg extends WxRecvMsg {
 		this.event = event;
 		this.eventKey = eventKey;
 	}
-	public String welcomeProcessor() {
+	public String getEvent() {
 		return event;
 	}
 	public void setEvent(String event) {
