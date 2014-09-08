@@ -7,12 +7,12 @@ import org.springframework.stereotype.Component;
 import com.langyi.weixin.model.Account;
 import com.langyi.weixin.service.AccountService;
 import com.weixin.WeiXin;
-import com.weixin.vo.recv.WxRecvTextMsg;
+import com.weixin.vo.recv.WxRecvEventMsg;
 import com.weixin.vo.send.WxSendMsg;
 import com.weixin.vo.send.WxSendTextMsg;
 
-@Component("getUserCreditProcessor")
-public class GetCreditProcessor extends TextProcessor {
+@Component("getCreditProcessor")
+public class GetCreditProcessor extends EventProcessor {
 	
 	private static Logger LOG = Logger.getLogger(GetCreditProcessor.class.getName());
 	
@@ -20,7 +20,7 @@ public class GetCreditProcessor extends TextProcessor {
 	AccountService accountService;
 
 	@Override
-	public WxSendMsg process(WxRecvTextMsg receiveMsg) {
+	public WxSendMsg process(WxRecvEventMsg receiveMsg) {
 		LOG.debug("GetUserCreditProcessor start");
 		
 		String weixinAccount = receiveMsg.getFromUser();

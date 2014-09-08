@@ -14,8 +14,8 @@ public class TextProcessor implements MessageProcessor<WxRecvTextMsg> {
 	
 	private static Logger LOG = Logger.getLogger(WeixinController.class.getName());
 
-	@Resource(name="getUserCreditProcessor")
-	private TextProcessor getUserCreditProcessor;
+//	@Resource(name="getUserCreditProcessor")
+//	private TextProcessor getUserCreditProcessor;
 	
 	@Resource(name="bindCardProcessor")
 	private TextProcessor bindCardProcessor;
@@ -27,9 +27,9 @@ public class TextProcessor implements MessageProcessor<WxRecvTextMsg> {
 	public WxSendMsg process(WxRecvTextMsg receiveMsg) {
 		String command = receiveMsg.getContent().toLowerCase();
 		LOG.debug("Receive command: " + command);
-		if (command.indexOf("jf") == 0) {
-			return getUserCreditProcessor.process(receiveMsg);
-		}
+//		if (command.indexOf("jf") == 0) {
+//			return getUserCreditProcessor.process(receiveMsg);
+//		}
 		if (command.indexOf("bd") == 0) {
 			return bindCardProcessor.process(receiveMsg);
 		}
